@@ -1,6 +1,8 @@
 # Directory
 .vscode/
 .idea/
+bin/
+obj/
 
 # File
 .DS_Store
