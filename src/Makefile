@@ -3,7 +3,8 @@ CFLAGS = -Wall
 
 LIBS = $(shell pkg-config --libs glu freeglut)
 LIBS += -I../lib -I.
-LIBPATH += -L"/System/Library/Frameworks/OpenGL.framework/Libraries"
+LIBPATH = -L"/System/Library/Frameworks/OpenGL.framework/Libraries"
+LIBPATH += -I../lib -I.
 FRAMEWORK = -framework GLUT
 FRAMEWORK += -framework OpenGL 
 
