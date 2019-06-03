@@ -7,9 +7,6 @@
 #include <GL/glut.h>
 #endif
 
-
-#include <cstdio>
-
 void init_texture(GLuint* textures, int type_num);
 
 void set_texture(GLuint* textures, int index, char* filename);

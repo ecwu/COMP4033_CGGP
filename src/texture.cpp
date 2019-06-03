@@ -1,4 +1,4 @@
-#include "utils.h"
+#include "texture.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -12,7 +12,7 @@ void init_texture(GLuint *textures, int type_num) {
 
 void set_texture(GLuint* textures, int index, char* filename) {
 	int width, height, nrChannels;
-	unsigned char* data = stbi_load(filename, &width, &height, &nrChannels, 4);
+	unsigned char* data = stbi_load(filename, &width, &height, &nrChannels, 0);
 
 	glBindTexture(GL_TEXTURE_2D, textures[index]);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);

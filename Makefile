@@ -1,15 +1,10 @@
 SRC = ./src
 MAKE = make
-CP = cp -r
-RM = rm -rf
 
 .PHONY: clean
 
 all:
-	$(MAKE) -C $(SRC)/model
-	mkdir -p bin
-	$(CP) $(SRC)/model/bin/* bin
+	$(MAKE) -C $(SRC)
 
 clean:
-	$(MAKE) -C $(SRC)/model clean
-	$(RM) bin
+	$(MAKE) -C $(SRC) clean
