@@ -76,7 +76,7 @@ void chip_box() {
 	// Drawing bottom of chip box
 	polygon_face(white, points[0], points[1], points[2], points[3]);
 
-	char filename[] = "mcdonald.jpg";
+	char filename[] = "texture/mcdonald.jpg";
 	init_texture(textures, 2);
 	set_texture(textures, 0, filename);
 
@@ -97,7 +97,7 @@ void chips() {
 	chip_box();
 	srand((unsigned)time(NULL));
 
-	char filename[] = "chip.jpg";
+	char filename[] = "texture/chip.jpg";
 	set_texture(textures, 1, filename);
 
 	for (int i = 0; i < 100; i++) {
