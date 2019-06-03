@@ -104,5 +104,4 @@ void chips() {
 		chip(length);
 		glPopMatrix();
 	}
-
 }
