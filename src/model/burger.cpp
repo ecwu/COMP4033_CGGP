@@ -1,5 +1,5 @@
 #include "components.h"
-#include "utils.h"
+#include "texture.h"
 #include <ctime>
 #include <cstdlib>
 using namespace std;
@@ -79,7 +79,7 @@ void burger() {
 	glPopMatrix();
 
 	glEnable(GL_TEXTURE_2D);
-	char filename[] = "bun.jpg";
+	char filename[] = "texture/bun.jpg";
 	set_texture(burger_textures, 0, filename);
 	glPushMatrix();
 	glTranslated(0, 0.1 / 2, 0);
