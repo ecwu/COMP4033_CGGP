@@ -7,18 +7,10 @@ LIBPATH += -L"/System/Library/Frameworks/OpenGL.framework/Libraries"
 FRAMEWORK = -framework GLUT
 FRAMEWORK += -framework OpenGL 
 
-BINPATH = ../bin
-OBJPATH = ../obj
-
 MODELS = $(wildcard model/*.cpp)
-PROGRAM = $(BINPATH)/McDonald
-PROGRAMS = $(patsubst %.cpp,$(BINPATH)/%,$(MODELS))
-TARGETS = $(patsubst %.cpp,%,$(MODELS))
+PROGRAM = ../McDonald
 
-RM = rm -rf
-
-$(shell test -d $(BINPATH) || mkdir -p $(BINPATH))
-$(shell test -d $(OBJPATH) || mkdir -p $(OBJPATH))
+RM = rm -f
 
 ifeq ($(shell uname), Darwin)
 	LIBS = $(LIBPATH) $(FRAMEWORK)
@@ -29,13 +21,8 @@ endif
 
 all: $(PROGRAM)
 
-$(TARGETS): %: $(BINPATH)/%
-
 $(PROGRAM): $(MODELS) $(wildcard *.cpp)
 	$(CXX) -o $@ $^ $(CFLAGS) $(LIBS)
 
-$(PROGRAMS): $(BINPATH)/%: model/%.cpp main.cpp 
-	$(CXX) -o $@ $^ $(CFLAGS) $(LIBS)
-
 clean:
-	$(RM) $(OBJPATH) $(BINPATH)
+	$(RM) $(PROGRAM)
