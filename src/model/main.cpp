@@ -18,12 +18,13 @@ void display() {
 	glRotatef(rotate_y, 0.0, 1.0, 0.0);
 
 	// Main function of drawings
-	//chips();
+	chips();
 	//cola();
 	//burger();
-	plate();
+	//plate();
 
 	glFlush();
+	glDisable(GL_TEXTURE_2D);
 	glutSwapBuffers();
 }
 
