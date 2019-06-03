@@ -17,4 +17,6 @@ void cola();
 
 void burger();
 
+void plate();
+
 #endif
