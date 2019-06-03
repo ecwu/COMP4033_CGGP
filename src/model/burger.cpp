@@ -1,7 +1,10 @@
 #include "components.h"
-
+#include "utils.h"
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 
+GLuint burger_textures[4];
 
 void sphere()
 {
@@ -41,7 +44,7 @@ void sphere()
 	}
 
 	for (int i = 0; i < np; i++) { // i: index for polygon
-		glBegin(GL_LINE_LOOP);
+		glBegin(GL_QUADS);
 		glVertex3fv(v[index[4 * i + 0]]);
 		glVertex3fv(v[index[4 * i + 1]]);
 		glVertex3fv(v[index[4 * i + 2]]);
@@ -55,30 +58,40 @@ void sphere()
 void burger() {
 	GLUquadricObj* qobj;
 	qobj = gluNewQuadric();
-	gluQuadricDrawStyle(qobj, GLU_LINE); /* flat shaded */
+	gluQuadricDrawStyle(qobj, GLU_FILL);
+	gluQuadricTexture(qobj, GL_TRUE);
 	gluQuadricNormals(qobj, GLU_SMOOTH);
+	init_texture(burger_textures, 4);
 
 	// Uncomment the object name
 	glPushMatrix();
-	glTranslated(0, 0.5, 0);
-	glColor3f(1.0, 0.686, 0.067);
-	sphere();
+		glPushMatrix();
+			glTranslated(0, 0.15, 0);
+			glColor3f(1.0, 0.686, 0.067);
+			sphere();
+		glPopMatrix();
 	glPopMatrix();
+
 	glPushMatrix();
-	glTranslated(0, -0.5, 0);
+	glTranslated(0, -0.15, 0);
 	glRotatef(180, 1.0, 0.0, 0.0);
 	sphere();
 	glPopMatrix();
+
+	glEnable(GL_TEXTURE_2D);
+	char filename[] = "bun.jpg";
+	set_texture(burger_textures, 0, filename);
 	glPushMatrix();
 	glTranslated(0, 0.1 / 2, 0);
 	glRotatef(90, 1.0, 0.0, 0.0);
 	glColor3f(0.337, 0.18, 0.078);
 	gluCylinder(qobj, 0.5, 0.5, 0.1, 30, 2);
 	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
 
 	glPushMatrix();
 	glTranslated(0, 0.1 / 2, 0);
-	glTranslated(0, -0.2, 0);
+	glTranslated(0, -0.1, 0);
 	glRotatef(90, 1.0, 0.0, 0.0);
 	glColor3f(1.0, 0.321, 0.247);
 	gluCylinder(qobj, 0.5, 0.5, 0.1, 30, 2);
@@ -86,7 +99,7 @@ void burger() {
 
 	glPushMatrix();
 	glTranslated(0, 0.1 / 2, 0);
-	glTranslated(0, 0.2, 0);
+	glTranslated(0, 0.1, 0);
 	glRotatef(90, 1.0, 0.0, 0.0);
 	glColor3f(0.247, 1.0, 0.337);
 	gluCylinder(qobj, 0.5, 0.5, 0.1, 30, 2);
