@@ -19,8 +19,8 @@ void display() {
 
 	// Main function of drawings
 	// chips();
-	//cola();
-	burger();
+	cola();
+	// burger();
 	//plate();
 
 	glFlush();

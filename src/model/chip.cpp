@@ -7,7 +7,7 @@
 using namespace std;
 
 
-GLuint textures[2];
+GLuint chip_textures[2];
 
 void draw_face(GLfloat p1[3], GLfloat p2[3], GLfloat p3[3], GLfloat p4[3]) {
 	glTexCoord2f(0.0, 0.0); glVertex3fv(p1);
@@ -77,8 +77,8 @@ void chip_box() {
 	polygon_face(white, points[0], points[1], points[2], points[3]);
 
 	char filename[] = "texture/mcdonald.jpg";
-	init_texture(textures, 2);
-	set_texture(textures, 0, filename);
+	init_texture(chip_textures, 2);
+	set_texture(chip_textures, 0, filename);
 
 	// Drawing sides of chip box
 	glBegin(GL_QUADS);
@@ -98,7 +98,7 @@ void chips() {
 	srand((unsigned)time(NULL));
 
 	char filename[] = "texture/chip.jpg";
-	set_texture(textures, 1, filename);
+	set_texture(chip_textures, 1, filename);
 
 	for (int i = 0; i < 100; i++) {
 		length = rand() % 4 * 1.0 / 10 + 0.1;

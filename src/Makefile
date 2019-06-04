@@ -22,7 +22,7 @@ endif
 
 all: $(PROGRAM)
 
-$(PROGRAM): $(MODELS) $(filter-out cola_texture.cpp,$(wildcard *.cpp))
+$(PROGRAM): $(MODELS) $(wildcard *.cpp)
 	$(CXX) -o $@ $^ $(CFLAGS) $(LIBS)
 
 clean:
