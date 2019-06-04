@@ -21,10 +21,11 @@ void cola(){
     for (int j = 0; j <= nslice; ++j) 
 	{
        glTexCoord2f( t/(2*M_PI), 1.0); 
-	   glVertex3f( topR*cos( t), height, -1*topR*sin(t));
+	   glVertex3f( bottomR*cos( t), 0.0, -1*bottomR*sin(t));
 
        glTexCoord2f( t/(2*M_PI), 0.0); 
-	   glVertex3f( bottomR*cos( t), 0.0, -1*bottomR*sin(t));
+	   glVertex3f( topR*cos( t), height, -1*topR*sin(t));
+
 	   t = t + dt;
      }
     glEnd();
