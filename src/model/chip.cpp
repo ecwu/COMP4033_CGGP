@@ -10,19 +10,40 @@ using namespace std;
 GLuint chip_textures[2];
 
 void draw_face(GLfloat p1[3], GLfloat p2[3], GLfloat p3[3], GLfloat p4[3]) {
-	glTexCoord2f(0.0, 0.0); glVertex3fv(p1);
-	glTexCoord2f(0.0, 1.0); glVertex3fv(p2);
-	glTexCoord2f(1.0, 1.0); glVertex3fv(p3);
-	glTexCoord2f(1.0, 0.0); glVertex3fv(p4);
+	glTexCoord2f(0.0, 0.0); 
+	glNormal3fv(p1);
+	glVertex3fv(p1);
+
+	glTexCoord2f(0.0, 1.0); 
+	glNormal3fv(p2);
+	glVertex3fv(p2);
+
+	glTexCoord2f(1.0, 1.0); 
+	glNormal3fv(p3);
+	glVertex3fv(p3);
+
+	glTexCoord2f(1.0, 0.0); 
+	glNormal3fv(p4);
+	glVertex3fv(p4);
+
 }
 
 void polygon_face(GLfloat color[3], GLfloat p1[3], GLfloat p2[3], GLfloat p3[3], GLfloat p4[3]) {
 	glBegin(GL_POLYGON);
 	glColor3fv(color);
+	
+	glNormal3fv(p1);
 	glVertex3fv(p1);
+	
+	glNormal3fv(p2);
 	glVertex3fv(p2);
+	
+	glNormal3fv(p3);
 	glVertex3fv(p3);
+	
+	glNormal3fv(p4);
 	glVertex3fv(p4);
+
 	glEnd();
 }
 
