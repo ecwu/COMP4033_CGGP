@@ -78,7 +78,6 @@ void draw_curve_board(float x, float low_y, float high_y) {
 
 void plate() {
     glPushMatrix();
-    glRotatef(45, 1.0, 1.0, 0.5);
     draw_plane(0.8, 0.6);
 
     glPushMatrix();
