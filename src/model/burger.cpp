@@ -4,7 +4,7 @@
 #include <cstdlib>
 using namespace std;
 
-GLuint burger_textures[4];
+GLuint burger_textures[5];
 
 void sphere()
 {
@@ -43,13 +43,56 @@ void sphere()
 		}
 	}
 
+	int t = 0;
+	int index2[4 * rings/2 * sectors];
+	float ti[4 * rings/2 * sectors][2];
+	for (int r = 0; r < rings / 2 - 1; r++) {
+		for (int s = 0; s < sectors; s++) {
+			index2[4 * t + 0] = r * sectors + s;
+			index2[4 * t + 1] = r * sectors + (s + 1);
+			index2[4 * t + 2] = (r + 1) * sectors + (s + 1);
+			index2[4 * t + 3] = (r + 1) * sectors + s;
+
+			ti[4 * t + 0][0] = r;
+			ti[4 * t + 0][1] = s;
+
+			ti[4 * t + 1][0] = r;
+			ti[4 * t + 1][1] = s + 1;
+
+			ti[4 * t + 2][0] = r + 1;
+			ti[4 * t + 2][1] = s + 1;
+
+			ti[4 * t + 3][0] = r + 1;
+			ti[4 * t + 3][1] = s;
+
+			t++;
+		}
+	}
+
 	for (int i = 0; i < np; i++) { // i: index for polygon
 		glBegin(GL_QUADS);
+		
+		glNormal3fv(v[index[4 * i + 0]]);
+		// glTexCoord2f(0.0, 0.0);
+		glTexCoord2d(ti[4 * i + 0][1] / sectors, ti[4 * i + 0][0] / rings / 2);
 		glVertex3fv(v[index[4 * i + 0]]);
+
+		glNormal3fv(v[index[4 * i + 1]]);
+		// glTexCoord2f(0.0, 1.0);
+		glTexCoord2d(ti[4 * i + 1][1] / sectors, ti[4 * i + 1][0] / rings / 2);
 		glVertex3fv(v[index[4 * i + 1]]);
+
+		glNormal3fv(v[index[4 * i + 2]]);
+		// glTexCoord2f(1.0, 1.0);
+		glTexCoord2d(ti[4 * i + 2][1] / sectors, ti[4 * i + 2][0] / rings / 2);
 		glVertex3fv(v[index[4 * i + 2]]);
+
+		glNormal3fv(v[index[4 * i + 3]]);
+		// glTexCoord2f(1.0, 0.0);
+		glTexCoord2d(ti[4 * i + 3][1] / sectors, ti[4 * i + 3][0] / rings / 2);
 		glVertex3fv(v[index[4 * i + 3]]);
 		glEnd();
+
 	}
 
 }
@@ -61,25 +104,25 @@ void burger() {
 	gluQuadricDrawStyle(qobj, GLU_FILL);
 	gluQuadricTexture(qobj, GL_TRUE);
 	gluQuadricNormals(qobj, GLU_SMOOTH);
-	init_texture(burger_textures, 4);
+	init_texture(burger_textures, 5);
 
-	// Uncomment the object name
+	char bun[] = "texture/bun-t.jpg";
+	set_texture(burger_textures, 3, bun);
 	glPushMatrix();
-		glPushMatrix();
-			glTranslated(0, 0.15, 0);
-			glColor3f(1.0, 0.686, 0.067);
-			sphere();
-		glPopMatrix();
+		glTranslated(0, 0.15, 0);
+		glColor3f(1.0, 0.686, 0.067);
+		sphere();
 	glPopMatrix();
 
+	char bunb[] = "texture/bun-b.jpg";
+	set_texture(burger_textures, 4, bunb);
 	glPushMatrix();
 	glTranslated(0, -0.15, 0);
 	glRotatef(180, 1.0, 0.0, 0.0);
 	sphere();
 	glPopMatrix();
 
-	glEnable(GL_TEXTURE_2D);
-	char filename[] = "texture/bun.jpg";
+	char filename[] = "texture/cookedmeat.jpg";
 	set_texture(burger_textures, 0, filename);
 	glPushMatrix();
 	glTranslated(0, 0.1 / 2, 0);
@@ -87,8 +130,9 @@ void burger() {
 	glColor3f(0.337, 0.18, 0.078);
 	gluCylinder(qobj, 0.5, 0.5, 0.1, 30, 2);
 	glPopMatrix();
-	glDisable(GL_TEXTURE_2D);
 
+	char filename1[] = "texture/tomato.jpg";
+	set_texture(burger_textures, 1, filename1);
 	glPushMatrix();
 	glTranslated(0, 0.1 / 2, 0);
 	glTranslated(0, -0.1, 0);
@@ -97,6 +141,8 @@ void burger() {
 	gluCylinder(qobj, 0.5, 0.5, 0.1, 30, 2);
 	glPopMatrix();
 
+	char filename2[] = "texture/green.jpg";
+	set_texture(burger_textures, 2, filename2);
 	glPushMatrix();
 	glTranslated(0, 0.1 / 2, 0);
 	glTranslated(0, 0.1, 0);
