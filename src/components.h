@@ -13,8 +13,6 @@
 
 void chips();
 
-void chip(GLfloat height);
-
 void cola();
 
 void burger();
