@@ -148,7 +148,7 @@ int main(int argc, char* argv[]) {
 
 	// Create window
 	glutInitWindowSize(500, 500);
-	glutCreateWindow("McDonald");
+	glutCreateWindow("WangDonald");
 	init();
 
 	// Callback Functions
