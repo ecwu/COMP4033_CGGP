@@ -122,12 +122,7 @@ void burger() {
 	sphere();
 	glPopMatrix();
 
-<<<<<<< HEAD
 	char filename[] = "texture/cookedmeat.jpg";
-=======
-	glEnable(GL_TEXTURE_2D);
-	char filename[] = "texture/bun.jpg";
->>>>>>> cd0dc78ba9f55eb02440d60badefe7cc543be9d4
 	set_texture(burger_textures, 0, filename);
 	glPushMatrix();
 	glTranslated(0, 0.1 / 2, 0);

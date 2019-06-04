@@ -18,15 +18,10 @@ void display() {
 	glRotatef(rotate_y, 0.0, 1.0, 0.0);
 
 	// Main function of drawings
-	// chips();
-<<<<<<< HEAD
-	//cola();
-	burger();
-=======
+	chips();
 	cola();
-	// burger();
->>>>>>> cd0dc78ba9f55eb02440d60badefe7cc543be9d4
-	//plate();
+	burger();
+	plate();
 
 	glFlush();
 	glDisable(GL_TEXTURE_2D);
