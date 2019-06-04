@@ -6,6 +6,31 @@ using namespace std;
 GLfloat rotate_y = 0;
 GLfloat rotate_x = 0;
 
+void draw() {
+	glPushMatrix();
+	glTranslatef(0.0, -0.5, 0.0);
+	plate();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(0.4, -0.5, 0.4);
+	glScalef(0.8, 0.8, 0.8);
+	cola();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(0.2, -0.25, -0.2);
+	glScalef(0.6, 0.6, 0.6);
+	burger();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(-0.5, -0.38, 0.0);
+	glRotatef(90, 0.0, 1.0, 0.0);
+	glScalef(0.5, 0.5, 0.5);
+	chips();
+	glPopMatrix();
+}
 
 void display() {
 	// Clear screen and buffer
@@ -18,10 +43,7 @@ void display() {
 	glRotatef(rotate_y, 0.0, 1.0, 0.0);
 
 	// Main function of drawings
-	chips();
-	// cola();
-	// burger();
-	// plate();
+	draw();
 
 	glFlush();
 	glDisable(GL_TEXTURE_2D);
