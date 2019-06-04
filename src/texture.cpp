@@ -23,7 +23,3 @@ void set_texture(GLuint* textures, int index, char* filename) {
 
 	glEnable(GL_TEXTURE_2D);
 }
-
-void clear_texture(GLuint* textures, int type_num) {
-	glDeleteTextures(type_num, textures);
-}
