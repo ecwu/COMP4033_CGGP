@@ -109,9 +109,9 @@ void burger() {
 	char bun[] = "texture/bun-t.jpg";
 	set_texture(burger_textures, 3, bun);
 	glPushMatrix();
-		glTranslated(0, 0.15, 0);
-		glColor3f(1.0, 0.686, 0.067);
-		sphere();
+	glTranslated(0, 0.15, 0);
+	glColor3f(1.0, 0.686, 0.067);
+	sphere();
 	glPopMatrix();
 
 	char bunb[] = "texture/bun-b.jpg";
@@ -149,5 +149,6 @@ void burger() {
 	glRotatef(90, 1.0, 0.0, 0.0);
 	glColor3f(0.247, 1.0, 0.337);
 	gluCylinder(qobj, 0.5, 0.5, 0.1, 30, 2);
+	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 }

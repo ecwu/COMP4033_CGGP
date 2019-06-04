@@ -13,20 +13,20 @@ void draw_plane(float x, float z)
     
     glBegin(GL_QUADS);
     glTexCoord2f(0.0, 0.0);
-    // glNormal3f(-x, 0, -z);
-    glVertex3f(x, 0, -z);
-
-    glTexCoord2f(0.0, 1.0);
-    // glNormal3f(x, 0, -z);
-    glVertex3f(x, 0, z);
-
-    glTexCoord2f(1.0, 1.0);
-    // glNormal3f(x, 0, z);
+    // glNormal3f(-x, 0, z);
     glVertex3f(-x, 0, z);
 
-    glTexCoord2f(1.0, 0.0);
-    // glNormal3f(-x, 0, z);
+    glTexCoord2f(0.0, 1.0);
+    // glNormal3f(-x, 0, -z);
     glVertex3f(-x, 0, -z);
+
+    glTexCoord2f(1.0, 1.0);
+    // glNormal3f(x, 0, -z);
+    glVertex3f(x, 0, -z);
+
+    glTexCoord2f(1.0, 0.0);
+    // glNormal3f(x, 0, z);
+    glVertex3f(x, 0, z);
 
     glEnd();
 	glDisable(GL_TEXTURE_2D);

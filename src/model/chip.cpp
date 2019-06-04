@@ -103,10 +103,10 @@ void chip_box() {
 
 	// Drawing sides of chip box
 	glBegin(GL_QUADS);
-	draw_face(points[5], points[1], points[0], points[4]);
-	draw_face(points[6], points[2], points[1], points[5]);
-	draw_face(points[7], points[3], points[2], points[6]);
-	draw_face(points[4], points[0], points[3], points[7]);
+	draw_face(points[0], points[4], points[5], points[1]);
+	draw_face(points[1], points[5], points[6], points[2]);
+	draw_face(points[2], points[6], points[7], points[3]);
+	draw_face(points[3], points[7], points[4], points[0]);
 	glEnd();
 
 	glDisable(GL_TEXTURE_2D);
