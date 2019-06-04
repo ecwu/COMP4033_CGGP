@@ -19,9 +19,9 @@ void display() {
 
 	// Main function of drawings
 	chips();
-	cola();
-	burger();
-	plate();
+	// cola();
+	// burger();
+	// plate();
 
 	glFlush();
 	glDisable(GL_TEXTURE_2D);
