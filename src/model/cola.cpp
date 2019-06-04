@@ -1,6 +1,7 @@
 #include "components.h"
 #include "texture.h"
-
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 
 
@@ -20,11 +21,13 @@ void cola(){
     double t = 0.0;double dt = 2*M_PI/nslice;
     for (int j = 0; j <= nslice; ++j) 
 	{
-       glTexCoord2f( t/(2*M_PI), 1.0); 
-	   glVertex3f( bottomR*cos( t), 0.0, -1*bottomR*sin(t));
+		glNormal3f(bottomR*cos( t), 0.0, -1*bottomR*sin(t));
+		glTexCoord2f( t/(2*M_PI), 1.0); 
+		glVertex3f( bottomR*cos( t), 0.0, -1*bottomR*sin(t));
 
-       glTexCoord2f( t/(2*M_PI), 0.0); 
-	   glVertex3f( topR*cos( t), height, -1*topR*sin(t));
+		glNormal3f(topR*cos( t), height, -1*topR*sin(t));
+		glTexCoord2f( t/(2*M_PI), 0.0); 
+		glVertex3f( topR*cos( t), height, -1*topR*sin(t));
 
 	   t = t + dt;
      }
@@ -44,10 +47,12 @@ void cola(){
     t = 0.0; dt = 2*M_PI/nslice;
     for (int j = 0; j <= nslice; ++j) 
 	{
-       glTexCoord2f( t/(2*M_PI), 1.0); 
-	   glVertex3f( topR*cos( t), height, -1*topR*sin(t));
-       glTexCoord2f( t/(2*M_PI), 0.0); 
-	   glVertex3f( bottomR*cos( t), 0.0, -1*bottomR*sin(t));
+		glNormal3f(topR*cos( t), height, -1*topR*sin(t));
+		glTexCoord2f( t/(2*M_PI), 1.0);
+		glVertex3f(topR*cos( t), height, -1*topR*sin(t));
+		glNormal3f(bottomR*cos( t), 0.0, -1*bottomR*sin(t));
+		glTexCoord2f( t/(2*M_PI), 0.0); 
+		glVertex3f(bottomR*cos( t), 0.0, -1*bottomR*sin(t));
        
 	   t = t + dt;
      }
