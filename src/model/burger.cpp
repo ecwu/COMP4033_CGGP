@@ -43,9 +43,9 @@ void sphere()
 		}
 	}
 
-	int t = 0;
-	int index2[4 * rings/2 * sectors];
-	float ti[4 * rings/2 * sectors][2];
+	int t = 0, tmp = 4 * rings / 2 * sectors;
+	int *index2 = new int[tmp];
+	float (*ti)[2] = new float[tmp][2];
 	for (int r = 0; r < rings / 2 - 1; r++) {
 		for (int s = 0; s < sectors; s++) {
 			index2[4 * t + 0] = r * sectors + s;
@@ -68,6 +68,8 @@ void sphere()
 			t++;
 		}
 	}
+
+	delete[] index2;
 
 	for (int i = 0; i < np; i++) { // i: index for polygon
 		glBegin(GL_QUADS);
@@ -94,7 +96,7 @@ void sphere()
 		glEnd();
 
 	}
-
+	delete[] ti;
 }
 
 

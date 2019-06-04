@@ -10,7 +10,8 @@ GLuint cola_textures[2];
 void cola(){
 	glPushMatrix();
 	init_texture(cola_textures, 2);
-	set_texture(cola_textures, 0, "texture/cola_texture.bmp");
+	char filename1[] = "texture/cola_texture.bmp";
+	set_texture(cola_textures, 0, filename1);
 
 	// Draw bottle body
     glBegin( GL_QUAD_STRIP);
@@ -37,7 +38,8 @@ void cola(){
 
 	// Straw
 	glPushMatrix();
-	set_texture(cola_textures, 1, "texture/straw_texture.bmp");
+	char filename2[] = "texture/straw_texture.bmp";
+	set_texture(cola_textures, 1, filename2);
 
     glBegin( GL_QUAD_STRIP);
 	nslice = 20;

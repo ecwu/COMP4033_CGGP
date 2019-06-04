@@ -9,7 +9,8 @@ GLuint plate_texture[1];
 void draw_plane(float x, float z)
 {
     init_texture(plate_texture, 1);
-	set_texture(plate_texture, 0, "texture/cola_texture.bmp");
+	char filename[] = "texture/cola_texture.bmp";
+	set_texture(plate_texture, 0, filename);
     
     glBegin(GL_QUADS);
     glTexCoord2f(0.0, 0.0);
